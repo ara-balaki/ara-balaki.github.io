@@ -510,6 +510,24 @@ main {
 }
 
 /* ==========================================================================
+   Math (KaTeX, rendered at build time)
+   ========================================================================== */
+
+/* TeX reads left to right whatever the page does. Isolate it so a formula in
+   a Kurdish paragraph keeps its order and does not reorder the text around it. */
+.katex {
+  direction: ltr;
+  unicode-bidi: isolate;
+}
+
+/* A long display formula scrolls on its own instead of widening the page. */
+.katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-block: 0.25em;
+}
+
+/* ==========================================================================
    Font coverage probe (/font-check/)
    ========================================================================== */
 
