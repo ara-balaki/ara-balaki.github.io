@@ -434,13 +434,30 @@ main {
 
 /* site.description does double duty: the meta description, and the one line
    under the plate. Centred to sit with the plate above it. */
-.hero__lede {
+.hero__poem {
   max-inline-size: 36ch;
   margin-inline: auto;
   margin-block: 0 var(--space-xl);
   text-align: center;
-  text-wrap: balance;
   color: var(--ink-muted);
+}
+
+.hero__poem blockquote,
+.hero__poem p {
+  margin: 0;
+}
+
+.hero__poem figcaption {
+  margin-block-start: var(--space-s);
+  font-size: 0.9em;
+}
+
+.hero__poem figcaption::before {
+  content: '— ';
+}
+
+.hero__poem cite {
+  font-style: normal;
 }
 
 .hero__plate img {
