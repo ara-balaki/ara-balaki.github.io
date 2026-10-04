@@ -332,6 +332,19 @@ main {
 .prose code {
   font-family: var(--font-mono);
   font-size: 0.9em;
+  /* An identifier split across a line break is hard to read in any script,
+     and in a right-to-left paragraph the trailing fragment lands at the far
+     end of the next line. Keep code spans whole. */
+  white-space: nowrap;
+}
+
+/* A long span still has to fit on a narrow screen, so allow it to break
+   there rather than forcing the page to scroll sideways. */
+@media (max-width: 30rem) {
+  .prose code {
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
 }
 
 /* Code is always LTR, even inside a right-to-left paragraph. */
