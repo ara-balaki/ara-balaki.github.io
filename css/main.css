@@ -286,6 +286,15 @@ main {
   padding: var(--space-s);
 }
 
+/* Out of the flow so the 1px pixel cannot add a line below the footer. */
+.hit-counter {
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline-start: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
 main {
   padding-block: var(--space-l);
 }
