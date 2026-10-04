@@ -541,3 +541,43 @@ main {
   font-size: var(--step-2);
   margin-block: 0.2em;
 }
+
+/* ==========================================================================
+   Older / newer post links
+   ========================================================================== */
+
+/* The chrome is English, so the bar is laid out left to right even under a
+   Kurdish post: older on the start side, newer on the end side, the way the
+   list pages read. Each title still takes its own direction. */
+.post-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space);
+  justify-content: space-between;
+  margin-block-start: var(--space-xl);
+  padding-block-start: var(--space);
+  border-block-start: 1px solid var(--rule);
+}
+
+.post-nav__link {
+  display: flex;
+  flex-direction: column;
+  max-inline-size: 48%;
+  text-decoration: none;
+  color: inherit;
+}
+
+.post-nav__link--newer {
+  margin-inline-start: auto;
+  text-align: end;
+}
+
+.post-nav__label {
+  color: var(--ink-muted);
+  font-size: var(--step--1);
+}
+
+.post-nav__link:hover .post-nav__title {
+  color: var(--accent);
+  text-decoration: underline;
+}
