@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>Picking flowers along the way</title>
-  <link href="https://ara-balaki.github.io/feed.xml" rel="self"/>
-  <link href="https://ara-balaki.github.io"/>
+  <link href="https://pickingflowersalongtheway.blog/feed.xml" rel="self"/>
+  <link href="https://pickingflowersalongtheway.blog"/>
   <updated>2026-10-03T00:00:00.000Z</updated>
-  <id>https://ara-balaki.github.io</id>
+  <id>https://pickingflowersalongtheway.blog</id>
   <author><name>Ara</name></author>
   <entry xml:lang="en">
     <title>Where are you from?</title>
-    <link href="https://ara-balaki.github.io/posts/where-are-you-from/"/>
+    <link href="https://pickingflowersalongtheway.blog/posts/where-are-you-from/"/>
     <updated>2026-10-03T00:00:00.000Z</updated>
-    <id>https://ara-balaki.github.io/posts/where-are-you-from/</id>
+    <id>https://pickingflowersalongtheway.blog/posts/where-are-you-from/</id>
     <content type="html">&lt;p dir=&quot;auto&quot;&gt;The most common type of question a stranger gets is about where they are from. As a foreigner trying to socialize and integrate into a new society, this question becomes part of your daily communication.&lt;/p&gt;
 &lt;p dir=&quot;auto&quot;&gt;I imagine for most, it&#39;s trivial question to answer. Just name the country of your origin, or if you&#39;re a local you&#39;d say the name of your city, town or village.&lt;/p&gt;
 &lt;p dir=&quot;auto&quot;&gt;I also imagine that sometimes a person is either shy or even hesitant to name their place of origin, in the fear of being judged or stereotyped. We don&#39;t choose where we are born, yet it defines us.&lt;/p&gt;
@@ -55,9 +55,9 @@ That I am Kurdish, and from Kurdistan.&lt;/p&gt;
   </entry>
   <entry xml:lang="ckb">
     <title>وتارێکی کوردی</title>
-    <link href="https://ara-balaki.github.io/posts/%D9%88%D8%AA%D8%A7%D8%B1%DB%8E%DA%A9%DB%8C-%DA%A9%D9%88%D8%B1%D8%AF%DB%8C/"/>
+    <link href="https://pickingflowersalongtheway.blog/posts/%D9%88%D8%AA%D8%A7%D8%B1%DB%8E%DA%A9%DB%8C-%DA%A9%D9%88%D8%B1%D8%AF%DB%8C/"/>
     <updated>2026-10-02T00:00:00.000Z</updated>
-    <id>https://ara-balaki.github.io/posts/%D9%88%D8%AA%D8%A7%D8%B1%DB%8E%DA%A9%DB%8C-%DA%A9%D9%88%D8%B1%D8%AF%DB%8C/</id>
+    <id>https://pickingflowersalongtheway.blog/posts/%D9%88%D8%AA%D8%A7%D8%B1%DB%8E%DA%A9%DB%8C-%DA%A9%D9%88%D8%B1%D8%AF%DB%8C/</id>
     <content type="html">&lt;p dir=&quot;auto&quot;&gt;ئەم پەڕەیە بە تەواوی بە کوردی نووسراوە، بۆیە ئاراستەی لاپەڕەکە ڕاست‑بۆ‑چەپە. ناوی &lt;bdi lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;Eleventy&lt;/bdi&gt; و &lt;bdi lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;CSS&lt;/bdi&gt; بە ئینگلیزی دەمێننەوە.&lt;/p&gt;
 &lt;h2 id=&quot;بەشێکی-نوێ&quot; tabindex=&quot;-1&quot; dir=&quot;auto&quot;&gt;&lt;a class=&quot;header-anchor&quot; href=&quot;#بەشێکی-نوێ&quot;&gt;&lt;span&gt;بەشێکی نوێ&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;
 &lt;ul&gt;
@@ -73,9 +73,9 @@ That I am Kurdish, and from Kurdistan.&lt;/p&gt;
   </entry>
   <entry xml:lang="en">
     <title>Mixing English and Kurdish in one post</title>
-    <link href="https://ara-balaki.github.io/posts/mixing-english-and-kurdish-in-one-post/"/>
+    <link href="https://pickingflowersalongtheway.blog/posts/mixing-english-and-kurdish-in-one-post/"/>
     <updated>2026-10-01T00:00:00.000Z</updated>
-    <id>https://ara-balaki.github.io/posts/mixing-english-and-kurdish-in-one-post/</id>
+    <id>https://pickingflowersalongtheway.blog/posts/mixing-english-and-kurdish-in-one-post/</id>
     <content type="html">&lt;p dir=&quot;auto&quot;&gt;This paragraph is mostly English, but it mentions &lt;bdi lang=&quot;ckb&quot; dir=&quot;rtl&quot;&gt;کوردی&lt;/bdi&gt; in the middle, and then carries on. The comma after the Kurdish word has to stay on the English side.&lt;/p&gt;
 &lt;p dir=&quot;auto&quot;&gt;ئەم پەرەگرافە بە کوردی دەستپێدەکات، بەڵام ناوی &lt;bdi lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;Eleventy&lt;/bdi&gt; و ڕستەیەکی &lt;bdi lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;English inside it&lt;/bdi&gt; هەیە. پاشان بەردەوام دەبێت.&lt;/p&gt;
 &lt;p dir=&quot;auto&quot;&gt;A sentence that ends with a Kurdish word: &lt;bdi lang=&quot;ckb&quot; dir=&quot;rtl&quot;&gt;کتێب&lt;/bdi&gt;. The full stop belongs to the English sentence, not to the Kurdish word.&lt;/p&gt;
