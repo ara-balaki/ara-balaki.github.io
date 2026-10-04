@@ -432,6 +432,17 @@ main {
   margin: 0 0 var(--space-l);
 }
 
+/* site.description does double duty: the meta description, and the one line
+   under the plate. Centred to sit with the plate above it. */
+.hero__lede {
+  max-inline-size: 36ch;
+  margin-inline: auto;
+  margin-block: 0 var(--space-xl);
+  text-align: center;
+  text-wrap: balance;
+  color: var(--ink-muted);
+}
+
 .hero__plate img {
   display: block;
   inline-size: 100%;
