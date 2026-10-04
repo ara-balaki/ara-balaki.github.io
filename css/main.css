@@ -435,7 +435,7 @@ main {
 .hero__plate img {
   display: block;
   inline-size: 100%;
-  max-inline-size: 10rem;
+  max-inline-size: 14rem;
   block-size: auto;
   margin-inline: auto;
 }
