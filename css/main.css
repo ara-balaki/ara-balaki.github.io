@@ -450,13 +450,14 @@ main {
   margin: 0 0 var(--space-l);
 }
 
-/* site.description does double duty: the meta description, and the one line
-   under the plate. Centred to sit with the plate above it. */
+/* The Kurdish original, then the English translation. Set small, so the
+   poem sits under the plate without taking over the page. Both scripts share
+   one size — Blog Arabic's size-adjust already matches them. */
 .hero__poem {
-  max-inline-size: 36ch;
+  max-inline-size: max-content;
   margin-inline: auto;
   margin-block: 0 var(--space-xl);
-  text-align: center;
+  font-size: var(--step--1);
   color: var(--ink-muted);
 }
 
@@ -465,21 +466,58 @@ main {
   margin: 0;
 }
 
-/* Each Kurdish line is followed by its English translation, set smaller and
-   in italic so the original stays the voice of the poem. The gap after each
-   translation keeps a pair reading as one unit. */
-.hero__poem-en {
-  font-size: 0.85em;
-  font-style: italic;
-  line-height: var(--leading);
+/* Narrow screens: one stanza under the other, each flush to the side its
+   script reads from — Kurdish on the right, English on the left. */
+.hero__poem-stanza {
+  text-align: start;
 }
 
-.hero__poem-en + p {
-  margin-block-start: var(--space-s);
+/* In the facing layout a left-to-right eye meets the English first. A
+   slightly stronger ink marks the Kurdish as the original. */
+.hero__poem-stanza:lang(ckb) {
+  color: color-mix(in srgb, var(--ink) 55%, var(--ink-muted));
+}
+
+.hero__poem-stanza + .hero__poem-stanza {
+  margin-block-start: var(--space);
+}
+
+/* One line of verse per paragraph. A line too long for its column wraps
+   with a hanging indent, as printed verse does, so the turnover never reads
+   as a new line. */
+.hero__poem-stanza p {
+  padding-inline-start: 1.5em;
+  text-indent: -1.5em;
+}
+
+/* Wider screens: facing pages. The figure is right-to-left, so the grid's
+   first column is on the right: Kurdish there, English facing it on the
+   left, each line beside its translation. The stanzas dissolve into the grid
+   and `dense` packing pairs line n with line n. */
+@media (min-width: 36rem) {
+  .hero__poem blockquote {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, max-content));
+    grid-auto-flow: dense;
+    column-gap: var(--space-l);
+  }
+
+  .hero__poem-stanza {
+    display: contents;
+  }
+
+  .hero__poem-stanza p {
+    grid-column: 1;
+  }
+
+  .hero__poem-stanza[lang='en'] p {
+    grid-column: 2;
+  }
 }
 
 .hero__poem figcaption {
-  margin-block-start: var(--space-s);
+  margin-block-start: var(--space);
+  text-align: center;
   font-size: 0.9em;
 }
 
@@ -489,6 +527,17 @@ main {
 
 .hero__poem cite {
   font-style: normal;
+}
+
+/* The English line under the credit says what the poem is, for readers who
+   cannot read the Kurdish. English sets a poem's title in italic. */
+.hero__poem-note {
+  display: block;
+  margin-block-start: var(--space-s);
+}
+
+.hero__poem-note cite {
+  font-style: italic;
 }
 
 .hero__plate img {
