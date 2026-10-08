@@ -456,6 +456,19 @@ main {
   margin: 0;
 }
 
+/* Each Kurdish line is followed by its English translation, set smaller and
+   in italic so the original stays the voice of the poem. The gap after each
+   translation keeps a pair reading as one unit. */
+.hero__poem-en {
+  font-size: 0.85em;
+  font-style: italic;
+  line-height: var(--leading);
+}
+
+.hero__poem-en + p {
+  margin-block-start: var(--space-s);
+}
+
 .hero__poem figcaption {
   margin-block-start: var(--space-s);
   font-size: 0.9em;
