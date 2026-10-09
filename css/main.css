@@ -490,54 +490,64 @@ main {
   text-indent: -1.5em;
 }
 
-/* Wider screens: facing pages. The figure is right-to-left, so the grid's
-   first column is on the right: Kurdish there, English facing it on the
-   left, each line beside its translation. The stanzas dissolve into the grid
-   and `dense` packing pairs line n with line n. */
-@media (min-width: 36rem) {
-  .hero__poem blockquote {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, max-content));
-    grid-auto-flow: dense;
-    column-gap: var(--space-l);
-  }
-
-  .hero__poem-stanza {
-    display: contents;
-  }
-
-  .hero__poem-stanza p {
-    grid-column: 1;
-  }
-
-  .hero__poem-stanza[lang='en'] p {
-    grid-column: 2;
-  }
-}
-
+/* Each credit sits under its own stanza, flush with its lines. */
 .hero__poem figcaption {
   margin-block-start: var(--space);
-  text-align: center;
   font-size: 0.9em;
 }
 
-.hero__poem figcaption::before {
-  content: '— ';
+.hero__poem-credit {
+  display: block;
+  text-align: start;
 }
 
 .hero__poem cite {
   font-style: normal;
 }
 
-/* The English line under the credit says what the poem is, for readers who
-   cannot read the Kurdish. English sets a poem's title in italic. */
-.hero__poem-note {
-  display: block;
-  margin-block-start: var(--space-s);
+/* The English credit is set in italic, and the title inside it turns back
+   to roman — the English convention for a title within italic text. */
+.hero__poem-credit:lang(en) {
+  font-style: italic;
 }
 
-.hero__poem-note cite {
-  font-style: italic;
+/* Wider screens: facing pages. The figure is right-to-left, so the grid's
+   first column is on the right: Kurdish there, English facing it on the
+   left, each line beside its translation. The verse and the credits share
+   the figure's columns through subgrid, so each credit sits under its own
+   stanza. The stanzas dissolve into the grid and `dense` packing pairs line
+   n with line n. */
+@media (min-width: 36rem) {
+  .hero__poem {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, max-content));
+    column-gap: var(--space-l);
+  }
+
+  .hero__poem blockquote,
+  .hero__poem figcaption {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: subgrid;
+  }
+
+  .hero__poem blockquote {
+    grid-auto-flow: dense;
+  }
+
+  .hero__poem-stanza {
+    display: contents;
+  }
+
+  .hero__poem-stanza p,
+  .hero__poem-credit {
+    grid-column: 1;
+  }
+
+  .hero__poem-stanza[lang='en'] p,
+  .hero__poem-credit:lang(en) {
+    grid-column: 2;
+  }
 }
 
 .hero__plate img {
