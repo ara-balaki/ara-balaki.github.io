@@ -81,11 +81,14 @@
    in --font-body. The browser then picks the face per glyph, including mid
    word, with no markup and no JavaScript.
 
-   `size-adjust: 137.5%` comes from measurement, not taste: Literata's
-   x-height is 0.507 em while Scheherazade's letter bodies sit at 0.369 em.
-   Body height is what sets perceived text size in running prose, so that is
-   the anchor. Scheherazade's alef is much taller (0.705 em, landing at
-   0.969 em once scaled) — that is a line-height requirement, not a size one,
+   `size-adjust: 122%` comes from measurement, not taste. It splits the
+   difference between two anchors. Letter bodies alone (Literata's x-height
+   0.507 em, Scheherazade's 0.369 em) ask for 137.5%, but Literata's x-height
+   is unusually large and Arabic's tall strokes make that read oversized.
+   Letter tops alone (Literata's ascender 0.766 em, Scheherazade's alef
+   0.705 em) ask for 108.7%, which reads too small. The geometric mean of the
+   two is 122%. The alef then lands at 0.861 em — still taller than the Latin
+   x-height, so that is a line-height requirement, not a size one,
    which is why the Kurdish leading is raised further down.
    ========================================================================== */
 
@@ -119,7 +122,7 @@
   src: url('/fonts/arabic.woff2') format('woff2');
   font-weight: 400;
   font-display: swap;
-  size-adjust: 137.5%;
+  size-adjust: 122%;
   unicode-range: U+0600-06FF, U+0750-077F, U+0870-088E, U+08A0-08FF,
     U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FEFF;
 }
@@ -132,7 +135,7 @@
   src: url('/fonts/arabic-bold.woff2') format('woff2');
   font-weight: 700;
   font-display: swap;
-  size-adjust: 137.5%;
+  size-adjust: 122%;
   unicode-range: U+0600-06FF, U+0750-077F, U+0870-088E, U+08A0-08FF,
     U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FEFF;
 }
