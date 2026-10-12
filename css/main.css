@@ -6,13 +6,21 @@
    ========================================================================== */
 
 :root {
-  /* Type scale (Latin). Minor third. */
-  --step--1: 0.833rem;
-  --step-0: 1rem;
-  --step-1: 1.2rem;
-  --step-2: 1.44rem;
-  --step-3: 1.728rem;
-  --step-4: 2.074rem;
+  /* Type scale (Latin). Minor third, built on a fluid base.
+
+     EB Garamond has a small x-height (0.400 em), so at the browser default of
+     1rem it reads noticeably smaller than a typical web serif. The base is
+     1.125rem on phones and grows with the viewport to 1.3125rem from about
+     1050px wide (18px to 21px at the default 16px root). It is rem plus a
+     little vw, never vw alone, so browser zoom and the
+     reader's own default font size still scale it. Every other step is a
+     multiple of the base, so the whole scale moves together. */
+  --step-0: clamp(1.125rem, 1.05rem + 0.4vw, 1.3125rem);
+  --step--1: calc(var(--step-0) * 0.833);
+  --step-1: calc(var(--step-0) * 1.2);
+  --step-2: calc(var(--step-0) * 1.44);
+  --step-3: calc(var(--step-0) * 1.728);
+  --step-4: calc(var(--step-0) * 2.074);
 
   --measure: 68ch;
   --leading: 1.6;
