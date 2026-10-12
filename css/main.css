@@ -6,14 +6,16 @@
    ========================================================================== */
 
 :root {
-  /* Type scale (Latin). Minor third.
+  /* Type scale (Latin). Minor third, built on a fluid base.
 
-     The base is the browser default, 1rem. Literata was drawn for screen
-     reading and has a large x-height (0.507 em), so it reads comfortably at
-     that size without scaling up. Being rem, it follows browser zoom and the
-     reader's own default font size. Every other step is a multiple of the
-     base, so the whole scale moves together. */
-  --step-0: 1rem;
+     EB Garamond has a small x-height (0.400 em), so at the browser default of
+     1rem it reads noticeably smaller than a typical web serif. The base is
+     1.125rem on phones and grows with the viewport to 1.3125rem from about
+     1050px wide (18px to 21px at the default 16px root). It is rem plus a
+     little vw, never vw alone, so browser zoom and the reader's own default
+     font size still scale it. Every other step is a multiple of the base, so
+     the whole scale moves together. */
+  --step-0: clamp(1.125rem, 1.05rem + 0.4vw, 1.3125rem);
   --step--1: calc(var(--step-0) * 0.833);
   --step-1: calc(var(--step-0) * 1.2);
   --step-2: calc(var(--step-0) * 1.44);
@@ -74,28 +76,27 @@
 /* ==========================================================================
    Fonts
 
-   Literata (Latin) and Scheherazade New (Arabic), both OFL — see
+   EB Garamond (Latin) and Scheherazade New (Arabic), both OFL — see
    src/fonts/NOTICE.md. Installed and measured by scripts/install-fonts.py.
 
    The two faces are separate families split by `unicode-range`, both listed
    in --font-body. The browser then picks the face per glyph, including mid
    word, with no markup and no JavaScript.
 
-   `size-adjust: 122%` comes from measurement, not taste. It splits the
-   difference between two anchors. Letter bodies alone (Literata's x-height
-   0.507 em, Scheherazade's 0.369 em) ask for 137.5%, but Literata's x-height
-   is unusually large and Arabic's tall strokes make that read oversized.
-   Letter tops alone (Literata's ascender 0.766 em, Scheherazade's alef
-   0.705 em) ask for 108.7%, which reads too small. The geometric mean of the
-   two is 122%. The alef then lands at 0.861 em — still taller than the Latin
-   x-height, so that is a line-height requirement, not a size one,
+   `size-adjust: 104.2%` comes from measurement, not taste. It splits the
+   difference between two anchors. Letter bodies alone (EB Garamond's
+   x-height 0.400 em, Scheherazade's 0.369 em) ask for 108.5%; letter tops
+   alone (EB Garamond's ascender 0.705 em, Scheherazade's alef 0.705 em) ask
+   for 100.1%. The geometric mean of the two is 104.2%. The alef then lands
+   at 0.734 em — taller than the Latin x-height, so that is a line-height
+   requirement, not a size one,
    which is why the Kurdish leading is raised further down.
    ========================================================================== */
 
 @font-face {
   font-family: 'Blog Latin';
   src: url('/fonts/latin.woff2') format('woff2');
-  font-weight: 400 900;
+  font-weight: 400 800;
   font-style: normal;
   font-display: swap;
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
@@ -106,7 +107,7 @@
 @font-face {
   font-family: 'Blog Latin';
   src: url('/fonts/latin-italic.woff2') format('woff2');
-  font-weight: 400 900;
+  font-weight: 400 800;
   font-style: italic;
   font-display: swap;
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
@@ -122,7 +123,7 @@
   src: url('/fonts/arabic.woff2') format('woff2');
   font-weight: 400;
   font-display: swap;
-  size-adjust: 122%;
+  size-adjust: 104.2%;
   unicode-range: U+0600-06FF, U+0750-077F, U+0870-088E, U+08A0-08FF,
     U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FEFF;
 }
@@ -135,7 +136,7 @@
   src: url('/fonts/arabic-bold.woff2') format('woff2');
   font-weight: 700;
   font-display: swap;
-  size-adjust: 122%;
+  size-adjust: 104.2%;
   unicode-range: U+0600-06FF, U+0750-077F, U+0870-088E, U+08A0-08FF,
     U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FEFF;
 }
