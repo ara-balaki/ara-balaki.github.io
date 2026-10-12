@@ -6,16 +6,14 @@
    ========================================================================== */
 
 :root {
-  /* Type scale (Latin). Minor third, built on a fluid base.
+  /* Type scale (Latin). Minor third.
 
-     EB Garamond has a small x-height (0.400 em), so at the browser default of
-     1rem it reads noticeably smaller than a typical web serif. The base is
-     1.125rem on phones and grows with the viewport to 1.3125rem from about
-     1050px wide (18px to 21px at the default 16px root). It is rem plus a
-     little vw, never vw alone, so browser zoom and the
-     reader's own default font size still scale it. Every other step is a
-     multiple of the base, so the whole scale moves together. */
-  --step-0: clamp(1.125rem, 1.05rem + 0.4vw, 1.3125rem);
+     The base is the browser default, 1rem. Literata was drawn for screen
+     reading and has a large x-height (0.507 em), so it reads comfortably at
+     that size without scaling up. Being rem, it follows browser zoom and the
+     reader's own default font size. Every other step is a multiple of the
+     base, so the whole scale moves together. */
+  --step-0: 1rem;
   --step--1: calc(var(--step-0) * 0.833);
   --step-1: calc(var(--step-0) * 1.2);
   --step-2: calc(var(--step-0) * 1.44);
@@ -76,25 +74,25 @@
 /* ==========================================================================
    Fonts
 
-   EB Garamond (Latin) and Scheherazade New (Arabic), both OFL — see
+   Literata (Latin) and Scheherazade New (Arabic), both OFL — see
    src/fonts/NOTICE.md. Installed and measured by scripts/install-fonts.py.
 
    The two faces are separate families split by `unicode-range`, both listed
    in --font-body. The browser then picks the face per glyph, including mid
    word, with no markup and no JavaScript.
 
-   `size-adjust: 108.5%` comes from measurement, not taste: EB Garamond's
-   x-height is 0.400 em while Scheherazade's letter bodies sit at 0.369 em.
+   `size-adjust: 137.5%` comes from measurement, not taste: Literata's
+   x-height is 0.507 em while Scheherazade's letter bodies sit at 0.369 em.
    Body height is what sets perceived text size in running prose, so that is
    the anchor. Scheherazade's alef is much taller (0.705 em, landing at
-   0.765 em once scaled) — that is a line-height requirement, not a size one,
+   0.969 em once scaled) — that is a line-height requirement, not a size one,
    which is why the Kurdish leading is raised further down.
    ========================================================================== */
 
 @font-face {
   font-family: 'Blog Latin';
   src: url('/fonts/latin.woff2') format('woff2');
-  font-weight: 400 800;
+  font-weight: 400 900;
   font-style: normal;
   font-display: swap;
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
@@ -105,7 +103,7 @@
 @font-face {
   font-family: 'Blog Latin';
   src: url('/fonts/latin-italic.woff2') format('woff2');
-  font-weight: 400 800;
+  font-weight: 400 900;
   font-style: italic;
   font-display: swap;
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
@@ -121,7 +119,7 @@
   src: url('/fonts/arabic.woff2') format('woff2');
   font-weight: 400;
   font-display: swap;
-  size-adjust: 108.5%;
+  size-adjust: 137.5%;
   unicode-range: U+0600-06FF, U+0750-077F, U+0870-088E, U+08A0-08FF,
     U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FEFF;
 }
@@ -134,7 +132,7 @@
   src: url('/fonts/arabic-bold.woff2') format('woff2');
   font-weight: 700;
   font-display: swap;
-  size-adjust: 108.5%;
+  size-adjust: 137.5%;
   unicode-range: U+0600-06FF, U+0750-077F, U+0870-088E, U+08A0-08FF,
     U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FEFF;
 }
