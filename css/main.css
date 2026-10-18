@@ -488,10 +488,6 @@ main {
   color: color-mix(in srgb, var(--ink) 55%, var(--ink-muted));
 }
 
-.hero__poem-stanza + .hero__poem-stanza {
-  margin-block-start: var(--space);
-}
-
 /* One line of verse per paragraph. A line too long for its column wraps
    with a hanging indent, as printed verse does, so the turnover never reads
    as a new line. */
@@ -521,42 +517,95 @@ main {
   font-style: italic;
 }
 
+/* Narrow screens: the translation waits behind a quiet "In English" under
+   the Kurdish credit, so the poem leaves room for the post list. */
+.hero__poem-translation {
+  margin-block-start: var(--space-s);
+  interpolate-size: allow-keywords;
+}
+
+/* The fold opens by growing and fading in. The closed translation is
+   hidden with `visibility` rather than the browser's `content-visibility`,
+   so it still sets the figure's width and the Kurdish doesn't jump sideways
+   when it opens. Browsers that can't animate to `auto` open it at once. */
+.hero__poem-translation::details-content {
+  content-visibility: visible;
+  visibility: hidden;
+  block-size: 0;
+  overflow: clip;
+  opacity: 0;
+}
+
+.hero__poem-translation[open]::details-content {
+  visibility: visible;
+  block-size: auto;
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero__poem-translation::details-content {
+    transition:
+      block-size 0.4s ease,
+      opacity 0.4s ease,
+      visibility 0.4s;
+  }
+}
+
+.hero__poem-translation summary {
+  inline-size: max-content;
+  cursor: pointer;
+}
+
+.hero__poem-translation .hero__poem-stanza {
+  margin-block: var(--space-s) var(--space);
+  font-size: calc(1em / 0.9);
+}
+
 /* Wider screens: facing pages. The figure is right-to-left, so the grid's
    first column is on the right: Kurdish there, English facing it on the
-   left, each line beside its translation. The verse and the credits share
-   the figure's columns through subgrid, so each credit sits under its own
-   stanza. The stanzas dissolve into the grid and `dense` packing pairs line
-   n with line n. */
-@media (min-width: 36rem) {
-  .hero__poem {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, max-content));
-    column-gap: var(--space-l);
-  }
+   left, each line beside its translation. The blockquote, caption, stanzas
+   and folded translation all dissolve into the figure's grid, and `dense`
+   packing pairs line n with line n and credit with credit. Browsers that
+   can't open the fold from CSS keep the narrow layout. */
+@supports selector(::details-content) {
+  @media (min-width: 36rem) {
+    .hero__poem {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, max-content));
+      grid-auto-flow: dense;
+      column-gap: var(--space-l);
+    }
 
-  .hero__poem blockquote,
-  .hero__poem figcaption {
-    grid-column: 1 / -1;
-    display: grid;
-    grid-template-columns: subgrid;
-  }
+    .hero__poem blockquote,
+    .hero__poem figcaption,
+    .hero__poem-stanza,
+    .hero__poem-translation,
+    .hero__poem-translation::details-content {
+      display: contents;
+    }
 
-  .hero__poem blockquote {
-    grid-auto-flow: dense;
-  }
+    .hero__poem-translation::details-content {
+      visibility: visible;
+    }
 
-  .hero__poem-stanza {
-    display: contents;
-  }
+    .hero__poem-translation summary {
+      display: none;
+    }
 
-  .hero__poem-stanza p,
-  .hero__poem-credit {
-    grid-column: 1;
-  }
+    .hero__poem-stanza p,
+    .hero__poem-credit {
+      grid-column: 1;
+    }
 
-  .hero__poem-stanza[lang='en'] p,
-  .hero__poem-credit:lang(en) {
-    grid-column: 2;
+    .hero__poem-translation p,
+    .hero__poem-translation .hero__poem-credit {
+      grid-column: 2;
+    }
+
+    /* The caption no longer boxes the credits, so they carry its gap. */
+    .hero__poem-credit {
+      margin-block-start: var(--space);
+    }
   }
 }
 
