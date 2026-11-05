@@ -249,6 +249,19 @@ main {
   color: var(--ink-muted);
 }
 
+/* One line under the names, on the home page only. The sentence is about
+   27.5em wide in the body face, so on a phone the size follows the viewport
+   (width less the 1rem gutters, over 28em) and never wraps; on wider screens
+   it stops at the small step. */
+.site-header__tagline {
+  flex-basis: 100%;
+  margin-block: calc(var(--space-s) - var(--space)) 0;
+  font-size: min(var(--step--1), calc((100vw - 2 * var(--space)) / 28));
+  line-height: 1.4;
+  white-space: nowrap;
+  color: var(--ink-muted);
+}
+
 /* With room for both on one line, push them to the two ends of the measure
    so the gap between them sits centred, each name on its own reading side. */
 @media (min-width: 30rem) {
@@ -665,6 +678,19 @@ main {
 .post-list__title a {
   color: inherit;
   text-decoration: none;
+}
+
+/* The whole entry is the tap target, but the link stays on the title, so a
+   screen reader announces just the title. The link's ::after is stretched
+   over the entry; hovering it counts as hovering the link. */
+.post-list > li {
+  position: relative;
+}
+
+.post-list__title a::after {
+  content: "";
+  position: absolute;
+  inset: 0;
 }
 
 .post-list__title a:hover {
