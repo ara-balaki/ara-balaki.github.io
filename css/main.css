@@ -551,8 +551,10 @@ main {
   }
 }
 
+/* The toggle sits on the right, under the Kurdish credit it belongs to. */
 .hero__poem-translation summary {
   inline-size: max-content;
+  margin-inline-start: auto;
   cursor: pointer;
 }
 
@@ -672,10 +674,13 @@ main {
 
 /* Title, description and date read as one block: the gaps inside an entry
    (0.25rem) are an eighth of the gap between entries (2rem), and each line
-   is one step smaller and quieter than the one above it. */
+   is one step smaller and quieter than the one above it. The description is
+   set upright, not italic: Kurdish has no italic, so a slanted English
+   description would make the two languages look different in one list. A
+   softer ink sets it apart from the title instead. */
 .post-list__description {
   margin-block: 0 0.25rem;
-  font-style: italic;
+  color: color-mix(in srgb, var(--ink) 75%, var(--ink-muted));
   line-height: 1.4;
 }
 
