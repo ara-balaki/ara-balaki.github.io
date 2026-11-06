@@ -249,18 +249,6 @@ main {
   color: var(--ink-muted);
 }
 
-/* One line under the names, on the home page only. The sentence is about
-   27.5em wide in the body face, so on a phone the size follows the viewport
-   (width less the 1rem gutters, over 28em) and never wraps; on wider screens
-   it stops at the small step. */
-.site-header__tagline {
-  flex-basis: 100%;
-  margin-block: calc(var(--space-s) - var(--space)) 0;
-  font-size: min(var(--step--1), calc((100vw - 2 * var(--space)) / 28));
-  line-height: 1.4;
-  white-space: nowrap;
-  color: var(--ink-muted);
-}
 
 /* With room for both on one line, push them to the two ends of the measure
    so the gap between them sits centred, each name on its own reading side. */
@@ -470,7 +458,19 @@ main {
    ========================================================================== */
 
 .hero__plate {
-  margin: 0 0 var(--space-l);
+  margin: 0;
+}
+
+/* One line under the plate. The sentence is about 27.5em wide in the body
+   face, so on a phone the size follows the viewport (width less the 1rem
+   gutters, over 28em) and never wraps; wider screens stop at the small step. */
+.hero__tagline {
+  margin: var(--space-s) 0 var(--space-l);
+  text-align: center;
+  font-size: min(var(--step--1), calc((100vw - 2 * var(--space)) / 28));
+  line-height: 1.4;
+  white-space: nowrap;
+  color: var(--ink-muted);
 }
 
 /* The Kurdish original, then the English translation. Set small, so the
@@ -479,7 +479,7 @@ main {
 .hero__poem {
   max-inline-size: max-content;
   margin-inline: auto;
-  margin-block: 0 var(--space-xl);
+  margin-block: var(--space-xl) 0;
   font-size: var(--step--1);
   color: var(--ink-muted);
 }
@@ -635,16 +635,11 @@ main {
 /* Phones: a smaller plate and tighter gaps, so the first posts show on the
    first screen instead of sitting below the poem. */
 @media (max-width: 36rem) {
-  .hero__plate {
-    margin-block-end: var(--space);
-  }
-
   .hero__plate img {
     max-inline-size: 8rem;
   }
 
   .hero__poem {
-    margin-block-end: var(--space-l);
     font-size: calc(var(--step-0) * 0.72);
   }
 }
