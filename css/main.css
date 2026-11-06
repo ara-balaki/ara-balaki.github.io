@@ -473,9 +473,9 @@ main {
   color: var(--ink-muted);
 }
 
-/* The Kurdish original, then the English translation. Set small, so the
-   poem sits under the plate without taking over the page. Both scripts share
-   one size — Blog Arabic's size-adjust already matches them. */
+/* The Kurdish original, then the English translation, closing the page
+   under the post list. Set small, as an epigraph is. Both scripts share one
+   size — Blog Arabic's size-adjust already matches them. */
 .hero__poem {
   max-inline-size: max-content;
   margin-inline: auto;
@@ -530,45 +530,9 @@ main {
   font-style: italic;
 }
 
-/* Narrow screens: the translation waits behind a quiet "In English" under
-   the Kurdish credit, so the poem leaves room for the post list. */
+/* Narrow screens: the translation follows under the Kurdish credit. */
 .hero__poem-translation {
   margin-block-start: var(--space-s);
-  interpolate-size: allow-keywords;
-}
-
-/* The fold opens by growing and fading in. The closed translation is
-   hidden with `visibility` rather than the browser's `content-visibility`,
-   so it still sets the figure's width and the Kurdish doesn't jump sideways
-   when it opens. Browsers that can't animate to `auto` open it at once. */
-.hero__poem-translation::details-content {
-  content-visibility: visible;
-  visibility: hidden;
-  block-size: 0;
-  overflow: clip;
-  opacity: 0;
-}
-
-.hero__poem-translation[open]::details-content {
-  visibility: visible;
-  block-size: auto;
-  opacity: 1;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .hero__poem-translation::details-content {
-    transition:
-      block-size 0.4s ease,
-      opacity 0.4s ease,
-      visibility 0.4s;
-  }
-}
-
-/* The toggle sits on the right, under the Kurdish credit it belongs to. */
-.hero__poem-translation summary {
-  inline-size: max-content;
-  margin-inline-start: auto;
-  cursor: pointer;
 }
 
 .hero__poem-translation .hero__poem-stanza {
@@ -579,48 +543,36 @@ main {
 /* Wider screens: facing pages. The figure is right-to-left, so the grid's
    first column is on the right: Kurdish there, English facing it on the
    left, each line beside its translation. The blockquote, caption, stanzas
-   and folded translation all dissolve into the figure's grid, and `dense`
-   packing pairs line n with line n and credit with credit. Browsers that
-   can't open the fold from CSS keep the narrow layout. */
-@supports selector(::details-content) {
-  @media (min-width: 36rem) {
-    .hero__poem {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, max-content));
-      grid-auto-flow: dense;
-      column-gap: var(--space-l);
-    }
+   and translation all dissolve into the figure's grid, and `dense` packing
+   pairs line n with line n and credit with credit. */
+@media (min-width: 36rem) {
+  .hero__poem {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, max-content));
+    grid-auto-flow: dense;
+    column-gap: var(--space-l);
+  }
 
-    .hero__poem blockquote,
-    .hero__poem figcaption,
-    .hero__poem-stanza,
-    .hero__poem-translation,
-    .hero__poem-translation::details-content {
-      display: contents;
-    }
+  .hero__poem blockquote,
+  .hero__poem figcaption,
+  .hero__poem-stanza,
+  .hero__poem-translation {
+    display: contents;
+  }
 
-    .hero__poem-translation::details-content {
-      visibility: visible;
-    }
+  .hero__poem-stanza p,
+  .hero__poem-credit {
+    grid-column: 1;
+  }
 
-    .hero__poem-translation summary {
-      display: none;
-    }
+  .hero__poem-translation p,
+  .hero__poem-translation .hero__poem-credit {
+    grid-column: 2;
+  }
 
-    .hero__poem-stanza p,
-    .hero__poem-credit {
-      grid-column: 1;
-    }
-
-    .hero__poem-translation p,
-    .hero__poem-translation .hero__poem-credit {
-      grid-column: 2;
-    }
-
-    /* The caption no longer boxes the credits, so they carry its gap. */
-    .hero__poem-credit {
-      margin-block-start: var(--space);
-    }
+  /* The caption no longer boxes the credits, so they carry its gap. */
+  .hero__poem-credit {
+    margin-block-start: var(--space);
   }
 }
 
