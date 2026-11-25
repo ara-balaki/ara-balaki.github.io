@@ -1,0 +1,39 @@
+# Installed into the public repository by .github/workflows/deploy.yml, which
+# replaces that repository's tree on every publish. Edit it here, not there.
+#
+# The public repository holds only the built site; this publishes it as is.
+# It replaces GitHub's built-in branch deploy, whose upload step still
+# targets a deprecated Node.
+
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# A deploy in flight finishes; the next one queues behind it.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          path: .
+
+      - id: deployment
+        uses: actions/deploy-pages@v5
